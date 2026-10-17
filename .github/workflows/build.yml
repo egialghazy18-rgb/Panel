@@ -17,8 +17,17 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - run: flutter build apk --release
+      
+      # INI KUNCINYA: GitHub yang bikin folder android otomatis
+      - name: Generate Android Folder
+        run: flutter create --platforms=android .
+      
+      - name: Get Dependencies
+        run: flutter pub get
+        
+      - name: Build APK
+        run: flutter build apk --release
+        
       - uses: actions/upload-artifact@v4
         with:
           name: Panel-APK
