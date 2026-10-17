@@ -38,30 +38,48 @@ class _P extends State<P> {
   @override
   Widget build(BuildContext c) => Scaffold(
     appBar: AppBar(title: const Text("Injection Panel")),
-    body: Column(
-      children: [
-        SwitchListTile(
-          title: const Text("AimBot"),
-          value: aimbot, // <-- INI YANG KURANG TADI
-          onChanged: (v) {
-            setState(() => aimbot = v);
-            t("aimbot", v);
-          },
-        ),
-        SwitchListTile(
-          title: const Text("Wallhack"),
-          value: wallhack, // <-- INI JUGA
-          onChanged: (v) {
-            setState(() => wallhack = v);
-            t("wallhack", v);
-          },
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {}, 
-          child: const Text("RUN GAME")
-        )
-      ],
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.black45,
+            child: const Row(
+              children: [
+                Icon(Icons.phone_android, color: Colors.redAccent),
+                SizedBox(width: 10),
+                Text("HP Terdeteksi: Android", style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          SwitchListTile(
+            title: const Text("AimBot"),
+            value: aimbot,
+            onChanged: (v) {
+              setState(() => aimbot = v);
+              t("aimbot", v);
+            },
+          ),
+          SwitchListTile(
+            title: const Text("Wallhack"),
+            value: wallhack,
+            onChanged: (v) {
+              setState(() => wallhack = v);
+              t("wallhack", v);
+            },
+          ),
+          const SizedBox(height: 30),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+            ),
+            onPressed: () {}, 
+            child: const Text("RUN GAME", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))
+          )
+        ],
+      ),
     ),
   );
 }
